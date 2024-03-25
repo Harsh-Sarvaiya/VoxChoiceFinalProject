@@ -7,7 +7,7 @@
 
     <!-- Question EditText -->
     <EditText
-        android:id="@+id/edit_text_question"
+        android:id="@+id/editTextQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your question"
@@ -18,7 +18,7 @@
 
     <!-- Number of options EditText -->
     <EditText
-        android:id="@+id/edit_text_num_options"
+        android:id="@+id/editTextNumOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter number of options"
@@ -27,7 +27,7 @@
 
     <!-- Options EditTexts (added dynamically based on the number of options) -->
     <LinearLayout
-        android:id="@+id/options_container"
+        android:id="@+id/optionsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -38,7 +38,7 @@
 
     <!-- Button to create the poll -->
     <Button
-        android:id="@+id/button_create_poll"
+        android:id="@+id/btnCreatePollFinal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Poll"
