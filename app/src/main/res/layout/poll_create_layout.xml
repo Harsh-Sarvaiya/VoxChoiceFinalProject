@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Question EditText -->
+    <EditText
+        android:id="@+id/edit_text_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your question"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:gravity="start"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Number of options EditText -->
+    <EditText
+        android:id="@+id/edit_text_num_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter number of options"
+        android:inputType="number"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Options EditTexts (added dynamically based on the number of options) -->
+    <LinearLayout
+        android:id="@+id/options_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Option EditTexts will be added dynamically here -->
+
+    </LinearLayout>
+
+    <!-- Button to create the poll -->
+    <Button
+        android:id="@+id/button_create_poll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Poll"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>
