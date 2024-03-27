@@ -133,6 +133,8 @@ public class VotePollActivity extends AppCompatActivity {
                     Log.e("Firebase Database Error", "Database Error: " + databaseError.getMessage(), databaseError.toException());
                 }
             });
+
+            finish();
         } else {
             // No option selected
             Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show();

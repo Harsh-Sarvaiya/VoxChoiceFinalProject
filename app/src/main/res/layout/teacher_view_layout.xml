@@ -21,4 +21,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:layout_editor_absoluteX="0dp" />
 
+    <Button
+        android:id="@+id/btnCreatePoll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Create Poll"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="152dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

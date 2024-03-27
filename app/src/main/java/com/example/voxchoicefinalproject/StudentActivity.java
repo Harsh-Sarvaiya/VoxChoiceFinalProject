@@ -6,6 +6,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,11 +29,30 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_view_layout);
 
+        // Set up the Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Enable the back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerViewPolls);
 
-        // Retrieve poll data from Firebase Realtime Database
+        // Fetch data from the database
+        fetchDataFromDatabase();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload data here
+        fetchDataFromDatabase();
+    }
+
+    private void fetchDataFromDatabase() {
         DatabaseReference pollsRef = FirebaseDatabase.getInstance().getReference("polls");
+
         pollsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -61,7 +81,6 @@ public class StudentActivity extends AppCompatActivity {
                 });
 
                 recyclerView.setAdapter(adapter);
-
                 recyclerView.setLayoutManager(new LinearLayoutManager(StudentActivity.this));
             }
 
