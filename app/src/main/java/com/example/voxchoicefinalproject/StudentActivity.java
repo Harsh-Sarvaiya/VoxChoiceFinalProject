@@ -2,6 +2,7 @@ package com.example.voxchoicefinalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -29,11 +30,9 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_view_layout);
 
-        // Set up the Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Enable the back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Initialize RecyclerView
@@ -90,5 +89,13 @@ public class StudentActivity extends AppCompatActivity {
                 Toast.makeText(StudentActivity.this, "Failed to retrieve poll data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed(); // Handle back button click
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

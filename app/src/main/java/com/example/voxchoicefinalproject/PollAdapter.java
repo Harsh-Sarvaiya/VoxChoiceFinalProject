@@ -37,7 +37,6 @@ public class PollAdapter extends RecyclerView.Adapter<PollViewHolder> {
         String question = poll.getQuestion();
         holder.textQuestion.setText(question);
 
-        // Set click listener for the item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

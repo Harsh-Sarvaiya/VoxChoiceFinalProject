@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Change layout here
-                setContentView(R.layout.neither_layout);
+                Intent intent = new Intent(MainActivity.this, NeitherActivity.class);
+                startActivity(intent);
             }
         });
     }

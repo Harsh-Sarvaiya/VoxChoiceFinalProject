@@ -2,6 +2,7 @@ package com.example.voxchoicefinalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.voxchoicefinalproject.model.Poll;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +29,11 @@ public class CreatePollActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.poll_create_layout);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextQuestion = findViewById(R.id.editTextQuestion); // Initialize editTextQuestion
         editTextNumOptions = findViewById(R.id.editTextNumOptions);
@@ -104,5 +111,12 @@ public class CreatePollActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed(); // Handle back button click
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
