@@ -1,12 +1,75 @@
 package com.example.voxchoicefinalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.RadioButton;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.voxchoicefinalproject.model.Poll;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_login_layout); // Set the content view to the student login layout
+        setContentView(R.layout.student_view_layout);
+
+        // Initialize RecyclerView
+        recyclerView = findViewById(R.id.recyclerViewPolls);
+
+        // Retrieve poll data from Firebase Realtime Database
+        DatabaseReference pollsRef = FirebaseDatabase.getInstance().getReference("polls");
+        pollsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<Poll> polls = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Poll poll = snapshot.getValue(Poll.class);
+                    polls.add(poll);
+                }
+
+                // Create and set the adapter
+                PollAdapter adapter = new PollAdapter(polls);
+
+                // Set item click listener
+                adapter.setOnItemClickListener(new PollAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        // Retrieve the clicked poll
+                        Poll clickedPoll = polls.get(position);
+
+                        // Start VotePollActivity and pass the poll data
+                        Intent intent = new Intent(StudentActivity.this, VotePollActivity.class);
+                        intent.putExtra("pollId", clickedPoll.getId());
+                        intent.putExtra("question", clickedPoll.getQuestion());
+                        startActivity(intent);
+                    }
+                });
+
+                recyclerView.setAdapter(adapter);
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(StudentActivity.this));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle database error
+                Toast.makeText(StudentActivity.this, "Failed to retrieve poll data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

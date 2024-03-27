@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Poll {
+    private String id;
     private String question; // The question of the poll
     private List<String> options; // List of options for the poll
     private Map<String, Integer> votes; // Map to store the count of votes for each option
@@ -15,7 +16,8 @@ public class Poll {
         // Default constructor required for Firebase
     }
 
-    public Poll(String question, List<String> options) {
+    public Poll(String id, String question, List<String> options) {
+        this.id = id;
         this.question = question;
         this.options = options;
         this.votes = new HashMap<>();
@@ -26,6 +28,13 @@ public class Poll {
     }
 
     // Getters and setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getQuestion() {
         return question;
     }
