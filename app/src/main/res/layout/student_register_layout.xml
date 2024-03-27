@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/studentEmailInput" />
 
     <TextView
-        android:id="@+id/voxchoiceRegisterTitle"
+        android:id="@+id/studentRegisterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
@@ -52,17 +52,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Student Login"
+        android:text="Student Register"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/studentEmailInput"
-        app:layout_constraintTop_toBottomOf="@+id/voxchoiceRegisterTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/studentRegisterTitle" />
 
     <Button
         android:id="@+id/studentLoginButton"
         android:layout_width="181dp"
         android:layout_height="49dp"
         android:layout_marginTop="28dp"
-        android:text="Login"
+        android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,14 +77,14 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newHereStudentText" />
+        app:layout_constraintTop_toBottomOf="@+id/studentNewHereText" />
 
     <TextView
-        android:id="@+id/newHereStudentText"
+        android:id="@+id/studentNewHereText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        android:text="New Here? Create Account"
+        android:text="Already Registered? Login Here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studentLoginButton" />

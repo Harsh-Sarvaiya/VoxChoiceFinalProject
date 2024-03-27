@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +15,33 @@
         android:theme="@style/Theme.VoxChoiceFinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".StudentLogin"
+            android:exported="false" />
+        <activity
+            android:name=".StudentRegister"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherLogin"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherRegister"
+            android:exported="false" />
+        <activity
+            android:name=".NeitherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VotePollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreatePollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,10 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".CreatePollActivity" />
-        <activity android:name=".StudentActivity" />
-        <activity android:name=".TeacherActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
