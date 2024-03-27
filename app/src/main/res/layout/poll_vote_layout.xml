@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@drawable/toolbar1"
         app:layout_constraintTop_toTopOf="parent"
         app:title="List of Polls" />
 
@@ -17,10 +17,10 @@
     <TextView
         android:id="@+id/textQuestion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="57dp"
+        android:layout_marginBottom="8dp"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        android:textStyle="bold" />
 
     <!-- RadioGroup to display options -->
     <RadioGroup
@@ -39,6 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Vote"
+        android:background="@drawable/btn1"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="16dp"/>
 
 </LinearLayout>

@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@drawable/toolbar1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -41,27 +41,43 @@
         android:id="@+id/voxchoiceRegisterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:text="VoxChoice"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/studentLoginTitle"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Vox Populi"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/VoxPopuliSubtitle"
+        android:layout_width="262dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="35dp"
+        android:fontFamily="@font/lexend"
+        android:text="Your Choice, Your Voice"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voxchoiceRegisterTitle" />
 
     <TextView
         android:id="@+id/studentLoginTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="36dp"
         android:text="Student Login"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/studentEmailInput"
-        app:layout_constraintTop_toBottomOf="@+id/voxchoiceRegisterTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/VoxPopuliSubtitle" />
 
     <Button
         android:id="@+id/studentLoginButton"
         android:layout_width="181dp"
         android:layout_height="49dp"
         android:layout_marginTop="28dp"
+        android:background="@drawable/btn1"
+        android:textColor="#FFFFFF"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -85,8 +101,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:text="New Here? Create Account"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studentLoginButton" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
