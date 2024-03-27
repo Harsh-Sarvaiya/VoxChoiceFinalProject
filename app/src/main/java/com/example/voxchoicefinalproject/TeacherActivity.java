@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class TeacherActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewPolls);
 
         Button btnCreatePoll = findViewById(R.id.btnCreatePoll);
+        Button btnTeacherLogout = findViewById(R.id.btnTeacherLogout);
 
         // Fetch data from the database
         fetchDataFromDatabase();
@@ -46,9 +48,17 @@ public class TeacherActivity extends AppCompatActivity {
         btnCreatePoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to the layout for Student
                 Intent intent = new Intent(TeacherActivity.this, CreatePollActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnTeacherLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), TeacherLogin.class));
+                finish();
             }
         });
     }

@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_page_layout);
 
+
+
         Button btnNeither = findViewById(R.id.btnNeither);
         Button btnTeacher = findViewById(R.id.btnTeacher);
         Button btnStudent = findViewById(R.id.btnStudent);
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate to the layout for Teacher
-                Intent intent = new Intent(MainActivity.this, TeacherActivity.class);
+                Intent intent = new Intent(MainActivity.this, TeacherRegister.class);
                 startActivity(intent);
             }
         });
@@ -31,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate to the layout for Student
-                Intent intent = new Intent(MainActivity.this, StudentActivity.class);
+                Intent intent = new Intent(MainActivity.this, StudentRegister.class);
                 startActivity(intent);
             }
         });
+
 
         btnNeither.setOnClickListener(new View.OnClickListener() {
             @Override

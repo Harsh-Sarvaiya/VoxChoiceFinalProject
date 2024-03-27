@@ -14,18 +14,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/studentEmailInput"
+        android:id="@+id/emailInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/studentPasswordInput"
-        app:layout_constraintTop_toBottomOf="@+id/studentLoginTitle" />
+        app:layout_constraintStart_toStartOf="@+id/passwordInput"
+        app:layout_constraintTop_toBottomOf="@+id/loginTitle" />
 
     <EditText
-        android:id="@+id/studentPasswordInput"
+        android:id="@+id/passwordInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentEmailInput" />
+        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <TextView
         android:id="@+id/voxchoiceRegisterTitle"
@@ -44,32 +44,32 @@
         android:layout_marginTop="148dp"
         android:text="VoxChoice"
         android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/studentLoginTitle"
+        app:layout_constraintStart_toStartOf="@+id/loginTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/studentLoginTitle"
+        android:id="@+id/loginTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Student Login"
+        android:text="Teacher Register"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/studentEmailInput"
+        app:layout_constraintStart_toStartOf="@+id/emailInput"
         app:layout_constraintTop_toBottomOf="@+id/voxchoiceRegisterTitle" />
 
     <Button
-        android:id="@+id/studentLoginButton"
+        android:id="@+id/loginButton"
         android:layout_width="181dp"
         android:layout_height="49dp"
         android:layout_marginTop="28dp"
-        android:text="Login"
+        android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentPasswordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <ProgressBar
-        android:id="@+id/studentProgressBar"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,16 +77,16 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newHereStudentText" />
+        app:layout_constraintTop_toBottomOf="@+id/newHereText" />
 
     <TextView
-        android:id="@+id/newHereStudentText"
+        android:id="@+id/newHereText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        android:text="New Here? Create Account"
+        android:text="Already Registered? Login Here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentLoginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
