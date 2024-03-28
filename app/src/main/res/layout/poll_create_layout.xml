@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Poll Creation" />
+
+    <!-- Question EditText -->
+
+    <!-- Number of options EditText -->
+    <EditText
+        android:id="@+id/editTextNumOptions"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="start"
+        android:hint="Enter number of options"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Enter your question"
+        android:inputType="textMultiLine"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Options EditTexts (added dynamically based on the number of options) -->
+    <LinearLayout
+        android:id="@+id/optionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Option EditTexts will be added dynamically here -->
+
+    </LinearLayout>
+
+    <!-- Button to create the poll -->
+    <Button
+        android:id="@+id/btnCreatePollFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn1"
+        android:textColor="#FFFFFF"
+        android:text="Create Poll" />
+
+</LinearLayout>
