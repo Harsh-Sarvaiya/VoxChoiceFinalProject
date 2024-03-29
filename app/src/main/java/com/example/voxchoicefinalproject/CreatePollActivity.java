@@ -98,11 +98,6 @@ public class CreatePollActivity extends AppCompatActivity {
                             // resetUI(); // Reset the UI fields for creating a new poll
                             finish();
 
-//                            // Start the next activity
-//                            Intent intent = new Intent(CreatePollActivity.this, VotePollActivity.class);
-//                            intent.putExtra("pollId", pollId);
-//                            intent.putExtra("question", question);
-//                            startActivity(intent);
                         } else {
                             // Handle database error
                             Toast.makeText(CreatePollActivity.this, "Failed to create poll: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();

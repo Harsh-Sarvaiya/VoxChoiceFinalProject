@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,7 +75,7 @@ public class StudentActivity extends AppCompatActivity {
                 }
 
                 // Create and set the adapter
-                PollAdapter adapter = new PollAdapter(polls);
+                PollAdapter adapter = new PollAdapter(polls, false);
 
                 // Set item click listener
                 adapter.setOnItemClickListener(new PollAdapter.OnItemClickListener() {
@@ -86,11 +85,17 @@ public class StudentActivity extends AppCompatActivity {
                         Poll clickedPoll = polls.get(position);
 
                         // Start VotePollActivity and pass the poll data
-                        Intent intent = new Intent(StudentActivity.this, VotePollActivity.class);
+                        Intent intent = new Intent(StudentActivity.this, StudentVotePollActivity.class);
                         intent.putExtra("pollId", clickedPoll.getId());
                         intent.putExtra("question", clickedPoll.getQuestion());
                         startActivity(intent);
                     }
+
+                    @Override
+                    public void onDeleteClick(int position) {
+
+                    }
+
                 });
 
                 recyclerView.setAdapter(adapter);

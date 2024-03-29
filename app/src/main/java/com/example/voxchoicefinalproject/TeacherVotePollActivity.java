@@ -19,15 +19,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class VotePollActivity extends AppCompatActivity {
+public class TeacherVotePollActivity extends AppCompatActivity {
 
     private DatabaseReference pollRef;
 //    String pollId = PollIdHolder.getPollId();
@@ -35,7 +33,7 @@ public class VotePollActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.poll_vote_layout);
+        setContentView(R.layout.teacher_vote_poll_layout);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -79,16 +77,22 @@ public class VotePollActivity extends AppCompatActivity {
 
                     RadioGroup radioGroupOptions = findViewById(R.id.radioGroupOptions);
                     for (String option : options) {
-                        RadioButton radioButton = new RadioButton(VotePollActivity.this);
+                        RadioButton radioButton = new RadioButton(TeacherVotePollActivity.this);
                         radioButton.setText(option);
                         radioGroupOptions.addView(radioButton);
+
+                        // Add TextView for vote count
+                        TextView voteCountTextView = new TextView(TeacherVotePollActivity.this);
+                        int currentVotes = dataSnapshot.child("votes").child(option).getValue(Integer.class);
+                        voteCountTextView.setText("Votes: " + currentVotes);
+                        radioGroupOptions.addView(voteCountTextView);
                     }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(VotePollActivity.this, "Failed to cast vote: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(TeacherVotePollActivity.this, "Failed to cast vote: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -110,9 +114,20 @@ public class VotePollActivity extends AppCompatActivity {
                             int currentVotes = votes.get(selectedOption);
                             votes.put(selectedOption, currentVotes + 1);
 
+                            // Update vote count TextView
+                            for (int i = 0; i < radioGroupOptions.getChildCount(); i++) {
+                                View view = radioGroupOptions.getChildAt(i);
+                                if (view instanceof RadioButton && ((RadioButton) view).getText().toString().equals(selectedOption)) {
+                                    // Find the corresponding TextView
+                                    TextView voteCountTextView = (TextView) radioGroupOptions.getChildAt(i + 1); // Assuming TextView is always next to RadioButton
+                                    voteCountTextView.setText("Votes: " + (currentVotes + 1));
+                                    break;
+                                }
+                            }
+
                             dataSnapshot.getRef().setValue(poll);
 
-                            Toast.makeText(VotePollActivity.this, "Vote submitted!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TeacherVotePollActivity.this, "Vote submitted!", Toast.LENGTH_SHORT).show();
                         } else {
                             Log.e("VotePollActivity", "Selected option not found in Poll object");
                         }
@@ -124,7 +139,7 @@ public class VotePollActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(VotePollActivity.this, "Database Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeacherVotePollActivity.this, "Database Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                     Log.e("Firebase Database Error", "Database Error: " + databaseError.getMessage(), databaseError.toException());
                 }
             });
