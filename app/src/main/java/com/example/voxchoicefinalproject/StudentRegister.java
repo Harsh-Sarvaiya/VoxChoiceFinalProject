@@ -71,7 +71,6 @@ public class StudentRegister extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 // register the user in firebase
-
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -112,7 +111,7 @@ public class StudentRegister extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

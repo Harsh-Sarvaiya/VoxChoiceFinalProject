@@ -15,6 +15,9 @@
         android:theme="@style/Theme.VoxChoiceFinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".TeacherVotePollActivity"
+            android:exported="false" />
+        <activity
             android:name=".StudentLogin"
             android:exported="false" />
         <activity
@@ -30,7 +33,7 @@
             android:name=".NeitherActivity"
             android:exported="false" />
         <activity
-            android:name=".VotePollActivity"
+            android:name=".StudentVotePollActivity"
             android:exported="false" />
         <activity
             android:name=".CreatePollActivity"

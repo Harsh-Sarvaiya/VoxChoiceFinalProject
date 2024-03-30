@@ -35,7 +35,7 @@ public class CreatePollActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        editTextQuestion = findViewById(R.id.editTextQuestion); // Initialize editTextQuestion
+        editTextQuestion = findViewById(R.id.editTextQuestion);
         editTextNumOptions = findViewById(R.id.editTextNumOptions);
         optionsContainer = findViewById(R.id.optionsContainer);
         Button buttonCreatePoll = findViewById(R.id.btnCreatePollFinal);
@@ -64,21 +64,22 @@ public class CreatePollActivity extends AppCompatActivity {
         buttonCreatePoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the question from the EditText field
                 String question = editTextQuestion.getText().toString();
 
-                // Create a list to hold the options
+                if (question.isEmpty()) {
+                    Toast.makeText(CreatePollActivity.this, "Please enter a question", Toast.LENGTH_SHORT).show();
+                    return; // Stop further execution
+                }
+
                 List<String> options = new ArrayList<>();
                 for (int i = 0; i < optionsContainer.getChildCount(); i++) {
                     EditText optionEditText = (EditText) optionsContainer.getChildAt(i);
                     options.add(optionEditText.getText().toString());
                 }
 
-                // Get a reference to the Firebase database
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference pollsRef = database.getReference("polls");
 
-                // Generate a unique key for the new poll
                 String pollId = pollsRef.push().getKey();
 
                 Poll poll = new Poll(pollId, question, options);
@@ -87,24 +88,13 @@ public class CreatePollActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                         if (databaseError == null) {
-                            // Poll saved successfully, store the poll ID
                             PollIdHolder.setPollId(pollId);
 
-                            // Provide feedback to the user (optional)
                             Toast.makeText(CreatePollActivity.this, "Poll created successfully", Toast.LENGTH_SHORT).show();
 
-                            // Optionally, you can finish the activity or reset the UI after creating the poll
-                            // finish(); // Finish the activity
-                            // resetUI(); // Reset the UI fields for creating a new poll
                             finish();
 
-//                            // Start the next activity
-//                            Intent intent = new Intent(CreatePollActivity.this, VotePollActivity.class);
-//                            intent.putExtra("pollId", pollId);
-//                            intent.putExtra("question", question);
-//                            startActivity(intent);
                         } else {
-                            // Handle database error
                             Toast.makeText(CreatePollActivity.this, "Failed to create poll: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -114,7 +104,7 @@ public class CreatePollActivity extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

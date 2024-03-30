@@ -22,18 +22,14 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <!-- RadioGroup to display options -->
     <RadioGroup
         android:id="@+id/radioGroupOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- RadioButtons for each option -->
-        <!-- You can add RadioButtons dynamically in code based on the number of options -->
     </RadioGroup>
 
-    <!-- Button to submit vote -->
     <Button
         android:id="@+id/buttonVote"
         android:layout_width="match_parent"

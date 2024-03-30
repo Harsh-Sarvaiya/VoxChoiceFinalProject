@@ -72,14 +72,13 @@ public class TeacherRegister extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 // register the user in firebase
-
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             String userID = fAuth.getCurrentUser().getUid();
 
-                            User user = new User(email, password, "Teacher"); // Assuming the role is "Teacher"
+                            User user = new User(email, password, "Teacher");
 
                             DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
                             usersRef.child(userID).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -96,7 +95,7 @@ public class TeacherRegister extends AppCompatActivity {
                         } else {
                             Toast.makeText(TeacherRegister.this, "Error!" +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                        progressBar.setVisibility(View.GONE); // Hide ProgressBar after completion
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }
@@ -113,7 +112,7 @@ public class TeacherRegister extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         finish();

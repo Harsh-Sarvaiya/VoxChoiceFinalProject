@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Poll question -->
     <TextView
         android:id="@+id/textQuestion"
         android:layout_width="match_parent"
@@ -14,4 +13,12 @@
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_gravity="end"
+        android:background="@drawable/btn1"
+        android:textColor="#FFFFFF"/>
 </LinearLayout>

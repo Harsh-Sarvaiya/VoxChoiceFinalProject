@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -11,40 +11,31 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/toolbar1"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Poll Creation" />
+        app:title="List of Polls" />
 
-    <EditText
-        android:id="@+id/editTextNumOptions"
+    <TextView
+        android:id="@+id/textQuestion"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="start"
-        android:hint="Enter number of options"
-        android:inputType="number" />
+        android:layout_height="57dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editTextQuestion"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Enter your question"
-        android:inputType="textMultiLine"
-        android:layout_marginBottom="16dp"/>
-
-    <LinearLayout
-        android:id="@+id/optionsContainer"
+    <RadioGroup
+        android:id="@+id/radioGroupOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    </LinearLayout>
+    </RadioGroup>
 
     <Button
-        android:id="@+id/btnCreatePollFinal"
+        android:id="@+id/buttonVote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:text="Vote"
         android:background="@drawable/btn1"
         android:textColor="#FFFFFF"
-        android:text="Create Poll" />
+        android:layout_marginTop="16dp"/>
 
 </LinearLayout>

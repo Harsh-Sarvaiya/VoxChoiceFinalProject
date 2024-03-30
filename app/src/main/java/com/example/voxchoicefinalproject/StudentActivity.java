@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,17 +48,14 @@ public class StudentActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerViewPolls);
 
-        // Fetch data from the database
         fetchDataFromDatabase();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Reload data here
         fetchDataFromDatabase();
     }
 
@@ -75,22 +71,24 @@ public class StudentActivity extends AppCompatActivity {
                     polls.add(poll);
                 }
 
-                // Create and set the adapter
-                PollAdapter adapter = new PollAdapter(polls);
+                PollAdapter adapter = new PollAdapter(polls, false);
 
-                // Set item click listener
                 adapter.setOnItemClickListener(new PollAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        // Retrieve the clicked poll
                         Poll clickedPoll = polls.get(position);
 
-                        // Start VotePollActivity and pass the poll data
-                        Intent intent = new Intent(StudentActivity.this, VotePollActivity.class);
+                        Intent intent = new Intent(StudentActivity.this, StudentVotePollActivity.class);
                         intent.putExtra("pollId", clickedPoll.getId());
                         intent.putExtra("question", clickedPoll.getQuestion());
                         startActivity(intent);
                     }
+
+                    @Override
+                    public void onDeleteClick(int position) {
+
+                    }
+
                 });
 
                 recyclerView.setAdapter(adapter);
@@ -99,7 +97,6 @@ public class StudentActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle database error
                 Toast.makeText(StudentActivity.this, "Failed to retrieve poll data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -107,7 +104,7 @@ public class StudentActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

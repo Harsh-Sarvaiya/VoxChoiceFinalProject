@@ -35,6 +35,7 @@ public class Poll {
     public void setId(String id) {
         this.id = id;
     }
+
     public String getQuestion() {
         return question;
     }
