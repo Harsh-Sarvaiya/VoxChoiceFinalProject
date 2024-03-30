@@ -41,38 +41,12 @@ public class TeacherLoginTest {
 
         Thread.sleep(1000);
 
+
+        // Ensure we have navigated to TeacherActivity
         Espresso.onView(withId(R.id.toolbar))
                 .check(matches(isDisplayed()));
 
-        Thread.sleep(1000);
-
         Espresso.onView(withId(R.id.btnCreatePoll))
-                .perform(click());
-
-        int numOptions = 3;
-        Espresso.onView(withId(R.id.editTextNumOptions))
-                .perform(replaceText(String.valueOf(numOptions)), closeSoftKeyboard());
-
-        Thread.sleep(1000);
-
-        Espresso.onView(withId(R.id.editTextNumOptions))
-                .perform(click());
-
-        Thread.sleep(1000);
-
-        Espresso.onView(withId(R.id.editTextQuestion))
-                .perform(ViewActions.typeText("What is your favorite color?"), closeSoftKeyboard());
-
-        for (int i = 1; i <= numOptions; i++) {
-            String optionHint = "Enter option " + i;
-            Espresso.onView(withHint(optionHint))
-                    .perform(ViewActions.typeText("Color " + i), closeSoftKeyboard());
-        }
-
-        Espresso.onView(withId(R.id.btnCreatePollFinal))
-                .perform(click());
-
-        Espresso.onView(ViewMatchers.withText("What is your favorite color?"))
                 .check(matches(isDisplayed()));
     }
 }

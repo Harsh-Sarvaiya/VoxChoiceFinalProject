@@ -33,6 +33,8 @@ public class TeacherDeletePollTest {
 
     @Test
     public void testTeacherLoginAndPoll() throws InterruptedException {
+
+        Thread.sleep(2000);
         // Verify that the poll exists
         Espresso.onView(ViewMatchers.withText("What is your favorite color?"))
                 .check(matches(isDisplayed()));
@@ -41,8 +43,10 @@ public class TeacherDeletePollTest {
         Espresso.onView(withId(R.id.btnDelete))
                 .perform(click());
 
+        Thread.sleep(2000);
+
         // Verify that the poll is deleted successfully
-        Espresso.onView(ViewMatchers.withId(R.id.btnDelete))
+        Espresso.onView(ViewMatchers.withText("What is your favorite color?"))
                 .check(ViewAssertions.doesNotExist());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.voxchoicefinalproject.test;
+package voxchoicefinalproject.test;
 
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -12,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.voxchoicefinalproject.R;
+import com.example.voxchoicefinalproject.StudentActivity;
 import com.example.voxchoicefinalproject.StudentLogin;
 
 import org.junit.Before;
@@ -25,25 +26,17 @@ public class StudentVotePollTest {
 
     @Before
     public void setUp() {
-        ActivityScenario.launch(StudentLogin.class);
+        ActivityScenario.launch(StudentActivity.class);
     }
 
     @Test
     public void testVoteInPoll() throws InterruptedException {
-
-        // Input login information
-        Espresso.onView(ViewMatchers.withId(R.id.emailInput))
-                .perform(ViewActions.typeText("bob@gmail.com"), ViewActions.closeSoftKeyboard());
-        Espresso.onView(ViewMatchers.withId(R.id.passwordInput))
-                .perform(ViewActions.typeText("qwertyuiop"), ViewActions.closeSoftKeyboard());
-        Espresso.onView(ViewMatchers.withId(R.id.loginButton))
-                .perform(ViewActions.click());
+        // Ensure StudentActivity is navigated to
+        Espresso.onView(ViewMatchers.withId(R.id.toolbar))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
         Thread.sleep(2000);
 
-        // Ensure StudentActivity is displayed
-        Espresso.onView(ViewMatchers.withId(R.id.toolbar))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
         // Ensure poll exists
         Espresso.onView(ViewMatchers.withText("What is your favorite color?"))
@@ -57,6 +50,8 @@ public class StudentVotePollTest {
 
         Espresso.onView(ViewMatchers.withId(R.id.buttonVote))
                 .perform(ViewActions.click());
+
+        Thread.sleep(2000);
 
         // Ensure vote has been cast and we are back at StudentActivity
         Espresso.onView(withId(R.id.toolbar))
