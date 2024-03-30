@@ -67,6 +67,12 @@ public class CreatePollActivity extends AppCompatActivity {
                 // Get the question from the EditText field
                 String question = editTextQuestion.getText().toString();
 
+                // Check if question is empty
+                if (question.isEmpty()) {
+                    Toast.makeText(CreatePollActivity.this, "Please enter a question", Toast.LENGTH_SHORT).show();
+                    return; // Stop further execution
+                }
+
                 // Create a list to hold the options
                 List<String> options = new ArrayList<>();
                 for (int i = 0; i < optionsContainer.getChildCount(); i++) {
