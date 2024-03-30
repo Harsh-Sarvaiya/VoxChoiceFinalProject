@@ -2,7 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="TeacherCreatePollTest">
+        <State />
+      </entry>
+      <entry key="TeacherLoginAndPollTest">
+        <State />
+      </entry>
+      <entry key="TeacherLoginAndPollTest (1)">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="testTeacherLoginAndPoll()">
         <State />
       </entry>
     </value>
