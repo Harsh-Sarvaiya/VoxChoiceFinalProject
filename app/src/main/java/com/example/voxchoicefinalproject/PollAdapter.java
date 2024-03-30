@@ -53,7 +53,7 @@ public class PollAdapter extends RecyclerView.Adapter<PollViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int clickedPosition = holder.getAdapterPosition(); // Get the current position
+                int clickedPosition = holder.getAdapterPosition();
                 if (listener != null && clickedPosition != RecyclerView.NO_POSITION) {
                     listener.onItemClick(clickedPosition);
                 }
@@ -63,7 +63,7 @@ public class PollAdapter extends RecyclerView.Adapter<PollViewHolder> {
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int clickedPosition = holder.getAdapterPosition(); // Get the current position
+                int clickedPosition = holder.getAdapterPosition();
                 if (listener != null && clickedPosition != RecyclerView.NO_POSITION) {
                     listener.onDeleteClick(clickedPosition);
                 }

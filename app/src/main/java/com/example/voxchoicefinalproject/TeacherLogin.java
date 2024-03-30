@@ -75,7 +75,6 @@ public class TeacherLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Fetch user role from database
                             String userID = fAuth.getCurrentUser().getUid();
                             usersRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -83,21 +82,17 @@ public class TeacherLogin extends AppCompatActivity {
                                     if (snapshot.exists()) {
                                         User user = snapshot.getValue(User.class);
                                         if (user != null && user.getRole().equals("Teacher")) {
-                                            // User is a teacher, navigate to TeacherActivity
                                             startActivity(new Intent(getApplicationContext(), TeacherActivity.class));
                                         } else {
-                                            // User is not a teacher, handle accordingly (e.g., show message or navigate to student activity)
                                             Toast.makeText(TeacherLogin.this, "You are not authorized as a teacher.", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
-                                        // User data not found in database
                                         Toast.makeText(TeacherLogin.this, "User data not found.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    // Handle database error
                                     Toast.makeText(TeacherLogin.this, "Database Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -122,7 +117,7 @@ public class TeacherLogin extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         finish();

@@ -28,7 +28,6 @@ import java.util.Map;
 public class StudentVotePollActivity extends AppCompatActivity {
 
     private DatabaseReference pollRef;
-//    String pollId = PollIdHolder.getPollId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +45,8 @@ public class StudentVotePollActivity extends AppCompatActivity {
             pollRef = FirebaseDatabase.getInstance().getReference("polls").child(pollId);
             retrievePollData();
         } else {
-            // Handle null pollId gracefully
             Toast.makeText(this, "Poll ID is null", Toast.LENGTH_SHORT).show();
-            finish(); // Close the activity if pollId is null
+            finish();
         }
 
         Button buttonVote = findViewById(R.id.buttonVote);
@@ -135,7 +133,7 @@ public class StudentVotePollActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

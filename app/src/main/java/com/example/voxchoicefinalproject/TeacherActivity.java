@@ -46,7 +46,6 @@ public class TeacherActivity extends AppCompatActivity {
         Button btnCreatePoll = findViewById(R.id.btnCreatePoll);
         Button btnTeacherLogout = findViewById(R.id.btnTeacherLogout);
 
-        // Fetch data from the database
         fetchDataFromDatabase();
 
         btnCreatePoll.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +69,6 @@ public class TeacherActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Reload data here
         fetchDataFromDatabase();
     }
 
@@ -87,17 +85,13 @@ public class TeacherActivity extends AppCompatActivity {
                     polls.add(poll);
                 }
 
-                // Create and set the adapter
                 PollAdapter adapter = new PollAdapter(polls, true);
 
-                // Set item click listener
                 adapter.setOnItemClickListener(new PollAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        // Retrieve the clicked poll
                         Poll clickedPoll = polls.get(position);
 
-                        // Start VotePollActivity and pass the poll data
                         Intent intent = new Intent(TeacherActivity.this, TeacherVotePollActivity.class);
                         intent.putExtra("pollId", clickedPoll.getId());
                         intent.putExtra("question", clickedPoll.getQuestion());
@@ -106,7 +100,6 @@ public class TeacherActivity extends AppCompatActivity {
 
                     @Override
                     public void onDeleteClick(int position) {
-                        // Handle delete button click
                         deletePoll(position);
                     }
                 });
@@ -117,7 +110,6 @@ public class TeacherActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle database error
                 Toast.makeText(TeacherActivity.this, "Failed to retrieve poll data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -144,7 +136,7 @@ public class TeacherActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

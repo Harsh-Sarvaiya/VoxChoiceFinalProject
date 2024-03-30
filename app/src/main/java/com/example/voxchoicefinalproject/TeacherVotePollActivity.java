@@ -28,7 +28,6 @@ import java.util.Map;
 public class TeacherVotePollActivity extends AppCompatActivity {
 
     private DatabaseReference pollRef;
-//    String pollId = PollIdHolder.getPollId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +45,8 @@ public class TeacherVotePollActivity extends AppCompatActivity {
             pollRef = FirebaseDatabase.getInstance().getReference("polls").child(pollId);
             retrievePollData();
         } else {
-            // Handle null pollId gracefully
             Toast.makeText(this, "Poll ID is null", Toast.LENGTH_SHORT).show();
-            finish(); // Close the activity if pollId is null
+            finish();
         }
 
         Button buttonVote = findViewById(R.id.buttonVote);
@@ -81,7 +79,6 @@ public class TeacherVotePollActivity extends AppCompatActivity {
                         radioButton.setText(option);
                         radioGroupOptions.addView(radioButton);
 
-                        // Add TextView for vote count
                         TextView voteCountTextView = new TextView(TeacherVotePollActivity.this);
                         int currentVotes = dataSnapshot.child("votes").child(option).getValue(Integer.class);
                         voteCountTextView.setText("Votes: " + currentVotes);
@@ -118,8 +115,7 @@ public class TeacherVotePollActivity extends AppCompatActivity {
                             for (int i = 0; i < radioGroupOptions.getChildCount(); i++) {
                                 View view = radioGroupOptions.getChildAt(i);
                                 if (view instanceof RadioButton && ((RadioButton) view).getText().toString().equals(selectedOption)) {
-                                    // Find the corresponding TextView
-                                    TextView voteCountTextView = (TextView) radioGroupOptions.getChildAt(i + 1); // Assuming TextView is always next to RadioButton
+                                    TextView voteCountTextView = (TextView) radioGroupOptions.getChildAt(i + 1);
                                     voteCountTextView.setText("Votes: " + (currentVotes + 1));
                                     break;
                                 }
@@ -132,7 +128,6 @@ public class TeacherVotePollActivity extends AppCompatActivity {
                             Log.e("VotePollActivity", "Selected option not found in Poll object");
                         }
                     } else {
-                        // Poll object is null
                         Log.e("VotePollActivity", "Poll object is null");
                     }
                 }
@@ -152,7 +147,7 @@ public class TeacherVotePollActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -13,9 +13,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Poll Creation" />
 
-    <!-- Question EditText -->
-
-    <!-- Number of options EditText -->
     <EditText
         android:id="@+id/editTextNumOptions"
         android:layout_width="match_parent"
@@ -33,18 +30,14 @@
         android:inputType="textMultiLine"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Options EditTexts (added dynamically based on the number of options) -->
     <LinearLayout
         android:id="@+id/optionsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Option EditTexts will be added dynamically here -->
-
     </LinearLayout>
 
-    <!-- Button to create the poll -->
     <Button
         android:id="@+id/btnCreatePollFinal"
         android:layout_width="match_parent"

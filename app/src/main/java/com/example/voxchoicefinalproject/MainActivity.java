@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btnTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to the layout for Teacher
+                // Navigate to Teacher
                 Intent intent = new Intent(MainActivity.this, TeacherRegister.class);
                 startActivity(intent);
             }
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to the layout for Student
+                // Navigate to Student
                 Intent intent = new Intent(MainActivity.this, StudentRegister.class);
                 startActivity(intent);
             }
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnNeither.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Change layout here
+                // Navigate to Nothing
                 Intent intent = new Intent(MainActivity.this, NeitherActivity.class);
                 startActivity(intent);
             }

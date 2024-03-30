@@ -88,14 +88,12 @@ public class StudentLogin extends AppCompatActivity {
                                             Toast.makeText(StudentLogin.this, "You are not authorized as a student.", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
-                                        // User data not found in database
                                         Toast.makeText(StudentLogin.this, "User data not found.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    // Handle database error
                                     Toast.makeText(StudentLogin.this, "Database Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -120,7 +118,7 @@ public class StudentLogin extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle back button click
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
